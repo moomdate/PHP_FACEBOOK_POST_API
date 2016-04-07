@@ -19,15 +19,4 @@ function facebook_post($message,$token){
 	$result = json_decode($response,true);
 	return $result;
 }
-$messages=$_GET['ms'];
-facebook_post($messages,"CAAAACZAVC6ygBAOVI83qZAlwLTXq0aZAKasdLQCyEgMW9pDUoC5o93EVyizE7VpyJBLnZALzZApIymDKDlRxHnA00nVVFPZBnHDZB18wAF32E4vn75VIfW4KepxiaopIphPiWWCzpausA7vqYBYNaqbSK6rG6ZCrwnLfOL6T0o6OkKtVaYj9246H3Ccgw7SNdj4leGS3azV1PQZDZD");
-
-?><!DOCTYPE html>
-<html>
-<head>
-	<title>test</title>
-</head>
-<body>
-<p>testttt</p>
-</body>
-</html>
+?>
