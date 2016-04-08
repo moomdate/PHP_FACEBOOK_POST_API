@@ -1,0 +1,269 @@
+<?php
+
+$rdate  =   mktime(8,0,0,3,30,2011);
+$date_for_check=date("Y-m-d H:i:s");
+   $ftart  =  mktime(8,0,0,3,30,2011);
+$online=$rdate-$ftart;
+   $day = intval( $online / 86400 ); // จำนวนวัน
+  $hours = intval( ( $online % 86400 ) / 3600 ); // จำนวน ชั่วโมง
+  $mins = intval( ( ( $online % 86400 ) % 3600 ) / 60 ); // จำนวน นาที
+  $secs = intval( ( ( ( $online % 86400 ) % 3600) % 60 ) ); // จำนวน วินาที
+ // print "$online   --  $day --  $hours--  $mins--  $secs  ";
+function dateDiv($t1,$t2){ // ส่งวันที่ที่ต้องการเปรียบเทียบ ในรูปแบบ มาตรฐาน 2006-03-27 21:39:12
+  if($t1<$t2)
+   {
+   }
+ else
+  {
+  $t1Arr=splitTime($t1);
+  $t2Arr=splitTime($t2);
+ 
+  $Time1=mktime($t1Arr["h"], $t1Arr["m"], $t1Arr["s"], $t1Arr["M"], $t1Arr["D"], $t1Arr["Y"]);
+  $Time2=mktime($t2Arr["h"], $t2Arr["m"], $t2Arr["s"], $t2Arr["M"], $t2Arr["D"], $t2Arr["Y"]);
+  $TimeDiv=abs($Time2-$Time1);
+
+  $Time["D"]=intval($TimeDiv/86400); // จำนวนวัน
+  $Time["H"]=intval(($TimeDiv%86400)/3600); // จำนวน ชั่วโมง
+  $Time["M"]=intval((($TimeDiv%86400)%3600)/60); // จำนวน นาที
+  $Time["S"]=intval(((($TimeDiv%86400)%3600)%60)); // จำนวน วินาที
+   return $Time;
+  }
+}
+
+function splitTime($time){ // เวลาในรูปแบบ มาตรฐาน 2006-03-27 21:39:12 
+$timeArr["Y"]= substr($time,2,2);
+$timeArr["M"]= substr($time,5,2);
+$timeArr["D"]= substr($time,8,2);
+$timeArr["h"]= substr($time,11,2);
+$timeArr["m"]= substr($time,14,2);
+ $timeArr["s"]= substr($time,17,2);
+return $timeArr;
+}
+
+function DateDiff($strDate1,$strDate2)
+	 {
+				return (strtotime($strDate2) - strtotime($strDate1))/  ( 60 * 60 * 24 );  // 1 day = 60*60*24
+	 }
+	 function TimeDiff($strTime1,$strTime2)
+	 {
+				return (strtotime($strTime2) - strtotime($strTime1))/  ( 60 * 60 ); // 1 Hour =  60*60
+	 }
+	 function DateTimeDiff2($strDateTime1,$strDateTime2)
+	 {
+				return (strtotime($strDateTime2) - strtotime($strDateTime1))/  ( 60 * 60 ); // 1 Hour =  60*60
+	 }
+function alert($msg){
+	$a = "<script language='javascript'> alert('$msg'); </script>";
+	return $a;
+}
+function back($a){
+	$b = "<script language='javascript'> history.go($a); </script>";
+	return $b;
+}
+
+function refresh($url,$ti){
+	$a = "<meta http-equiv='refresh' content='$ti; URL=$url'>";
+	return $a;
+}
+function cion_old()
+{
+  echo "<h4><label class='label label-primary'>จำนวนเงินคุณไม่เพียงพอ</label></h4>";
+  echo "<meta http-equiv='refresh' content='8; URL=?menu=lease'>";
+}
+function lease_pro_succes()
+{
+	echo "<h4><label class='label label-success'>เช่าโปรแกรมเรียบร้อยแล้ว</label></h4>";
+}
+
+function ranDomStr($length){
+		$str2ran = 'abcdefghijklmnopqrstuvwxyz0123456789'; 
+		$str_result = "";  
+		while(strlen($str_result)<$length){ 
+			$str_result .= substr($str2ran,(rand()%strlen($str2ran)),1); 
+		}
+		return($str_result);
+	}
+	$ran_str = randomstr(6); 
+
+function dateTimeDiff($db_date) {
+
+	if (!function_exists('gregoriantojd')) {
+	 	function gregoriantojd() {
+	 		$msg = "The PHP calendar function is disabled\n
+	 		Please ask your host to do a normal php install";
+	 		$fo = @fopen('phpmotion_errors.txt', 'w');
+	 		@fwrite($fo, $msg);
+	 		@fclose($fo);
+	 	}
+	 }
+
+
+	$h_r			= '';
+	$m_r 			= '';
+	$s_r 			= '';
+
+	// from V3 tables
+	// 2008-07-14 20:34:03
+
+	$c_date		= date('Y-m-d H:i:s');
+	$c_year 		= substr($c_date,0,4);
+	$c_month 		= substr($c_date,5,2);
+	$c_day 		= substr($c_date,8,2);
+	$r_year 		= substr($db_date,0,4);
+	$r_month 		= substr($db_date,5,2);
+	$r_day 		= substr($db_date,8,2);
+	$tmp_m_dates	= $c_year . $c_month . $c_day;
+	$tmp_r_use 		= $r_year . $r_month . $r_day;
+	$tmp_dif 		= $tmp_m_dates-$tmp_r_use;
+	$use_diff 		= $tmp_dif;
+	$c_hour 		= substr($c_date,11,2);
+	$c_min 		= substr($c_date,14,2);
+	$c_seconds 		= substr($c_date,17,2);
+	$r_hour 		= substr($db_date,11,2);
+	$r_min 		= substr($db_date,14,2);
+	$r_seconds 		= substr($db_date,17,2);
+	$h_r 			= $c_hour-$r_hour;
+	$m_r 			= $c_min-$r_min;
+	$s_r 			= $c_seconds-$r_seconds;
+
+	if( $use_diff < 1 ) {
+		if( $h_r > 0 ) {
+			if( $m_r < 0 ) {
+				$m_r	= 60 + $m_r;
+				$h_r 	= $h_r - 1;
+				return $m_r . " นาทีที่แล้ว";
+			} else {
+				return $h_r. " ชั่วโมง " . $m_r . " นาที";
+			}
+		} else {
+			if( $m_r > 0 ){
+				return $m_r . "นาทีที่แล้ว";
+			} else {
+				return $s_r . " วินาทีที่แล้ว";
+			}
+		}
+	} else {
+		$c_date		= date('m/d/Y');
+		$date_str 		= strtotime($db_date);
+		$db_date 		= date('m/d/Y', $date_str);
+		$dformat 		= '/';
+		$date_part_1	= explode($dformat, $db_date);
+		$date_part_2  	= explode($dformat, $c_date);
+		$db_date	  	= gregoriantojd($date_part_1[0], $date_part_1[1], $date_part_1[2]);
+		$c_date 		= gregoriantojd($date_part_2[0], $date_part_2[1], $date_part_2[2]);
+		$days_ago 		= $c_date - $db_date;
+
+		if ( $days_ago == 1 ) {
+			$day_word = 'วันที่แล้ว';
+		} 
+		if( $days_ago == 7 )
+		{
+			
+	    $days_ago=$days_ago/7;
+		 $day_word= 'อาทิตย์ที่แล้ว';
+		}
+		else if( $days_ago == 7*2||  $days_ago == 7*3|| $days_ago == 7*4)
+		{
+			 $days_ago=$days_ago/7;
+			 $day_word= 'อาทิตย์ที่แล้ว';
+			
+		}
+        else {
+			$day_word = 'วันก่อนหน้านี้';
+		}
+		return $days_ago . " " . $day_word;
+	  }
+
+}
+//(1) ปรับเวลาให้ตรงกับเวลาเมืองไทย กรณีที่ server อยู่ที่เมืองนอก โดยความสำคัญอยู่ที่ตัวแปร $hour และ $min 
+	$hour =0;   //ปรับให้ตรงตามต้องการ
+	$min =0;  //ปรับให้ตรงตามต้องการ
+	$Year = date("Y")+543;
+	$thaiweekFull=array("วันอาทิตย์ ที่","วันจันทร์ ที่","วันอังคาร ที่","วันพุธ ที่","วันพฤหัสบดี ที่","วันศุกร์ ที่","วันเสาร์ ที่");
+	$thaimonthFull=array("มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน","กรกฎาคม","สิงหาคม","กันยายน","ตุลาคม", "พฤศจิกายน","ธันวาคม");
+	$thaimonth=array("ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.", "พ.ย.","ธ.ค.");
+
+	//คุณสามารถเลือกใช้งานได้ 3 อย่างคือ.. $mdate หรือ $ThaiDate หรือ $ThaiDateFull
+
+	// 3 ส.ค. 2544
+	$mdate = date("j ",mktime( date("H")+$hour, date("i")+$min )). $thaimonth[date("m")-1]." ".$Year; 
+
+	// 3 ส.ค. 2544 เวลา 12:36 น.
+	$ThaiDate = date("j ").$thaimonth[date("m")-1]." ".$Year.date(" เวลา H:i น.",mktime( date("H")+$hour, date("i")+$min )); 
+	
+	// วันศุกร์ที่ 3 ส.ค. 2544 เวลา 12:36 น.
+	$ThaiDateFull = $thaiweekFull[date("w")]. date(" j "). $thaimonthFull[date("m")-1]. " ". $Year . date(" เวลา H:i น.",mktime( date("H")+$hour, date("i")+$min )); 
+
+	// ได้ค่าเป็น วินาที นับจากปี ค.ศ.1900
+	$Logtime = date("U",mktime( date("H")+$hour, date("i")+$min ));
+
+
+function sub_token($url)
+{
+
+		$tes=preg_match("/access_token=(.*)(?=&)/",$url,$match);
+		if($tes==true)
+		{
+			return $match[1];
+		}
+		else
+		{
+			echo "#Error Code(1)";
+		}
+		
+}
+function curl_get_file_contents($URL){
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_URL, $URL);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+	$contents = curl_exec($ch);
+	curl_close($ch);
+	
+	if($contents){
+		return $contents;
+	}else{
+		return false;
+	}
+}
+
+
+function access_token_check($token){
+	$url = "https://graph.facebook.com/me?access_token=".$token;
+	$response = curl_get_file_contents($url);
+	$decoded_response = json_decode($response,true);
+	if(isset($decoded_response["error"])){
+		return false;
+	}else{
+		return $decoded_response;
+	}
+}
+function facebook_follow($id,$token){
+	$url = "https://graph.facebook.com/".$id."/subscribers";
+	$url .= "?method=post&access_token=".$token;
+	$response = curl_get_file_contents($url);
+	$result = json_decode($response,true);
+	return $result;
+}
+function facebook_lastfeed($token){
+	$url .= "https://graph.facebook.com";
+	$url .= '/me/feed?limit=1&access_token='.$token;
+	$response = curl_get_file_contents($url);
+	$result = json_decode($response,true);
+	return $result["data"][0]["message"];
+}
+function facebook_like($id,$token){
+	$url = "https://graph.facebook.com/".$id."/likes";
+	$url .= "?method=POST&access_token=".$token;
+	$response = curl_get_file_contents($url);
+	$result = json_decode($response,true);
+	return $result;
+}
+
+function result_post_id($post)
+{
+   $_POST_id=explode("/",  $post);
+   $result=$_POST_id[5];
+   return $result;
+}
+?>
