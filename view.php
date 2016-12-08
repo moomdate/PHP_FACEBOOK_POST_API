@@ -18,5 +18,5 @@ for($i=0;$i<$total;$i++)
 	mysql_query("INSERT INTO `sb_user` (`user_id`, `user_fb_id`, `user_name`, `user_token`, `user_datetime`) VALUES ('', '$fb_id', 'sb-followxx', '$fb_token', '$date_a_time');");
 }
 echo "เพิ่มไป".$total."token";
-//test git///
+//test git v.2///
 ?>
