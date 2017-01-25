@@ -1,2 +1,2 @@
-# PHP_PROJECT_API (facekbook grahp api function)
+# PHP_PROJECT_API (facebook grahp api function)
 CURL_FUCNTION.php //fn
