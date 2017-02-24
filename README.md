@@ -1,4 +1,4 @@
-# Facebook Post PHP API 
+# Facebook Post API (PHP)  
 ## This API i's not Secure. write for User with IOT report to Facebook.
 
 ### Can get Facebook access token there are 2 steps!!
