@@ -3,5 +3,7 @@
 #### Example
 
 ``` php
-include("xxx");
+<?php
+faceFunc = new Fac();
+?>
 ```
