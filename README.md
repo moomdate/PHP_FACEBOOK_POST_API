@@ -1,5 +1,9 @@
 # Facebook Post PHP API 
 ## This API i's not Secure. write for User with IOT report to Facebook.
+
+## you can get your Facebook Access token From:[Click!!](https://www.facebook.com/v1.0/dialog/oauth?redirect_uri=fbconnect%3A%2F%2Fsuccess&scope=user_videos%2Cfriends_photos%2Cfriends_videos%2Cpublish_actions%2Cuser_photos%2Cfriends_photos%2Cuser_activities%2Cuser_likes%2Cuser_status%2Cfriends_status%2Cpublish_stream%2Cread_stream%2Cstatus_update&response_type=token&client_id=41158896424&_rdr) 
+
+
 #### Example 
 
 ``` php
