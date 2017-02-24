@@ -4,6 +4,8 @@
 
 ``` php
 <?php
-faceFunc = new Fac();
+  $AccessToken = "Your Access Token"; //get access token form 'https://developers.facebook.com/tools/debug/accesstoken/?app_id=41158896424'
+  $Func = new Fac($AccessToken);
+  $Func->postMessage("Hello!! Facebook");
 ?>
 ```
