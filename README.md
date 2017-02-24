@@ -1,2 +1,25 @@
 # Facebook Post 
-<a href="http://business.ramotion.com?utm_source=gthb&utm_medium=special&utm_campaign=paper-onboarding-contact-us/#Get_in_Touch" > <img src="https://github.com/Ramotion/navigation-stack/raw/master/contact_our_team@2x.png" width="150" height="30"></a>
+#### or Code
+
+``` swift
+override func viewDidLoad() {
+  super.viewDidLoad()
+
+  let onboarding = PaperOnboarding(itemsCount: 3)
+  onboarding.dataSource = self
+  onboarding.translatesAutoresizingMaskIntoConstraints = false
+  view.addSubview(onboarding)
+
+  // add constraints
+  for attribute: NSLayoutAttribute in [.Left, .Right, .Top, .Bottom] {
+    let constraint = NSLayoutConstraint(item: onboarding,
+                                        attribute: attribute,
+                                        relatedBy: .Equal,
+                                        toItem: view,
+                                        attribute: attribute,
+                                        multiplier: 1,
+                                        constant: 0)
+    view.addConstraint(constraint)
+  }
+}
+```
