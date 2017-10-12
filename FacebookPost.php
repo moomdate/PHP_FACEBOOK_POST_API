@@ -18,10 +18,10 @@ class FacebookFunc{
 			return false;
 		}
 	}
-	private function getAccessToken(){
+	private function getAccessToken(){ //get facebook app token
 		return $this->accessToken;
 	}
-	public function postMessage($message){
+	public function postMessage($message){ //action post message to timeline
 		$url = "https://graph.facebook.com/me/feed?method=POST&message=".$message."&access_token=".$this->getAccessToken();
 		$response = $this->curl_get_file_contents($url);
 		$result = json_decode($response,true);
